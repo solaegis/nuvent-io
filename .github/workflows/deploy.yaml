@@ -1,5 +1,5 @@
 name: Deploy to Firebase Hosting on merge
-"on":
+on:
   push:
     branches:
       - main
@@ -17,11 +17,19 @@ jobs:
           extended: true
       - name: Build
         run: hugo --gc --minify
+      - name: Check Secret Visibility
+        run: |
+          if [ -z "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}" ]; then
+            echo "::error::FIREBASE_SERVICE_ACCOUNT is NOT visible to this workflow."
+            exit 1
+          else
+            echo "FIREBASE_SERVICE_ACCOUNT is visible."
+          fi
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           channelId: live
           projectId: house-vavasour
           target: nuvent-io
