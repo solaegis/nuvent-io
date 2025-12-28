@@ -1,0 +1,23 @@
+version: '3'
+
+tasks:
+  serve:
+    desc: Run Hugo server with drafts enabled
+    cmds:
+      - hugo server -D
+
+  build:
+    desc: Build the static site
+    cmds:
+      - hugo --gc --minify
+
+  clean:
+    desc: Clean the public directory
+    cmds:
+      - rm -rf public/
+
+  deploy:
+    desc: Build and deploy to Firebase
+    cmds:
+      - task: build
+      - firebase deploy --only hosting:nuvent-io

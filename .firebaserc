@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "house-vavasour"
+  },
+  "targets": {
+    "house-vavasour": {
+      "hosting": {
+        "nuvent-io": [
+          "nuvent-io"
+        ]
+      }
+    }
+  }
+}
