@@ -1,4 +1,4 @@
-baseurl = "http://nuvent.io/"
+baseurl = "https://nuvent.io/"
 languageCode = "en-US"
 theme = "casper"
 title = "Nuvent"
