@@ -1,0 +1,120 @@
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6rem 1rem;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.heroTitle {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+  color: #d1d1d1; /* Soft white */
+}
+
+.heroTitle span {
+  color: var(--primary); /* Accent */
+  font-style: italic;
+}
+
+.heroSub {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-lg) auto;
+}
+
+.ctaContainer {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
+}
+
+.inputMock {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  width: 400px;
+  color: var(--text-muted);
+  font-family: monospace;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em;
+  background: var(--primary);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.primaryBtn {
+  background: var(--foreground);
+  color: var(--background);
+  padding: 1rem 2rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+.section {
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: var(--spacing-xl);
+}
+
+.sectionTitle {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.featureCard {
+  background: var(--surface);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface); /* Invisible border usually */
+}
+
+.featureCard h3 {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.featureCard p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}

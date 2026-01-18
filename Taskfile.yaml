@@ -1,23 +1,81 @@
 version: '3'
 
 tasks:
-  serve:
-    desc: Run Hugo server with drafts enabled
+  default:
+    cmds:
+      - task --list
+
+  # --- global shortcuts ---
+  dev:
+    desc: "Run both Hugo (marketing) and Next.js (app) in development mode"
+    deps: [hugo:serve, next:dev]
+
+  install:
+    desc: "Install dependencies for the Next.js app"
+    cmds:
+      - task: next:install
+
+  build:
+    desc: "Build both sites (Hugo + Next.js)"
+    deps: [hugo:build, next:build]
+
+  # --- next.js (saas app) ---
+  next:dev:
+    desc: "Start Next.js development server (localhost:3000)"
+    dir: next-app
+    cmds:
+      - npm run dev
+
+  next:build:
+    desc: "Build Next.js app for production"
+    dir: next-app
+    cmds:
+      - npm run build
+
+  next:start:
+    desc: "Start Next.js production server"
+    dir: next-app
+    cmds:
+      - npm run start
+
+  next:install:
+    desc: "Install Node.js dependencies"
+    dir: next-app
+    cmds:
+      - npm install
+    sources:
+      - next-app/package.json
+      - next-app/package-lock.json
+    generates:
+      - next-app/node_modules/.package-lock.json
+
+  next:lint:
+    desc: "Lint Next.js code"
+    dir: next-app
+    cmds:
+      - npm run lint
+
+  # --- hugo (marketing site) ---
+  hugo:serve:
+    aliases: [serve]
+    desc: "Run Hugo server with drafts enabled (localhost:1313)"
     cmds:
       - hugo server -D
 
-  build:
-    desc: Build the static site
+  hugo:build:
+    desc: "Build the static Hugo site"
     cmds:
       - hugo --gc --minify
 
-  clean:
-    desc: Clean the public directory
+  hugo:clean:
+    aliases: [clean]
+    desc: "Clean the public directory"
     cmds:
       - rm -rf public/
 
-  deploy:
-    desc: Build and deploy to Firebase
+  hugo:deploy:
+    aliases: [deploy]
+    desc: "Deploy Hugo site to Firebase Hosting"
     cmds:
-      - task: build
+      - task: hugo:build
       - firebase deploy --only hosting:nuvent-io

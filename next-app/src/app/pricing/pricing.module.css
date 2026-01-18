@@ -1,0 +1,150 @@
+.pricingPage {
+  min-height: 100vh;
+  padding: var(--spacing-lg) 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.title {
+  font-size: 4rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.toggleContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--surface);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  margin-top: var(--spacing-md);
+}
+
+.toggleBtn {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.toggleBtn.active {
+  background: var(--surface-hover);
+  color: var(--foreground);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: var(--spacing-md);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, border-color 0.2s;
+  min-height: 500px;
+}
+
+.card:hover {
+  border-color: var(--text-muted);
+  transform: translateY(-4px);
+  background: linear-gradient(to bottom, var(--surface), transparent);
+}
+
+.icon {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-muted);
+}
+
+.planName {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.planDesc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--spacing-md);
+  height: 40px; /* Force alignment */
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  font-family: var(--font-sans);
+}
+
+.period {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.features {
+  list-style: none;
+  margin-top: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.featureItem {
+  display: flex;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
+  color: var(--foreground);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.check {
+  color: var(--primary); /* Checkmark color */
+}
+
+.ctaBtn {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--foreground);
+  background: var(--foreground);
+  color: var(--background);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.ctaBtn:hover {
+  opacity: 0.9;
+}
+
+/* Specific button styles per card if needed */
+.card:nth-child(2) .ctaBtn {
+  /* Pro card usually distinct */
+}
