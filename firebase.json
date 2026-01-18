@@ -1,17 +1,31 @@
 {
-    "hosting": {
-        "target": "nuvent-io",
-        "public": "public",
-        "ignore": [
-            "firebase.json",
-            "**/.*",
-            "**/node_modules/**"
-        ],
-        "rewrites": [
-            {
-                "source": "**",
-                "destination": "/index.html"
+    "hosting": [
+        {
+            "target": "nuvent-io",
+            "public": "public",
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "rewrites": [
+                {
+                    "source": "**",
+                    "destination": "/index.html"
+                }
+            ]
+        },
+        {
+            "target": "nuvent-app",
+            "source": "next-app",
+            "ignore": [
+                "firebase.json",
+                "**/.*",
+                "**/node_modules/**"
+            ],
+            "frameworksBackend": {
+                "region": "us-central1"
             }
-        ]
-    }
+        }
+    ]
 }
